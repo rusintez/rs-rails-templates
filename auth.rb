@@ -27,13 +27,14 @@ file 'config/routes.rb', <<-RB
   #end
   #devise_for :#{name.pluralize.downcase}, :as => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register", :edit => "profile"}
   
-  devise_for #{name.pluralize.downcase}, :skip => [:registrations, :sessions] do
+  devise_for :#{name.pluralize.downcase}, :skip => [:registrations, :sessions] do
     # devise/registrations
     get 'register' => 'devise/registrations#new', :as => :new_user_registration
     post 'register' => 'devise/registrations#create', :as => :user_registration
-    get 'cancel' => 'devise/registrations#cancel', :as => :cancel_user_registration
     get 'profile' => 'devise/registrations#edit', :as => :edit_user_registration
-    put 'profile' => 'devise/registrations#update'
+    put 'profile' => 'devise/registrations#update', :as => :user_registration
+    
+    get 'cancel' => 'devise/registrations#cancel', :as => :cancel_user_registration
     delete 'cancel' => 'devise/registrations#destroy'
 
     # devise/sessions

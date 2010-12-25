@@ -19,13 +19,13 @@ remove_file 'config/routes.rb'
 file 'config/routes.rb', <<-RB
 #{app_name.camelize}::Application.routes.draw do
 
-  #devise_for :#{name.pluralize} do
+  #devise_for :#{name.pluralize.downcase} do
   #  get "login", :to => "devise/sessions#new"
   #  get "logout", :to => "devise/sessions#destroy"
   #  get "register", :to => "devise/registrations#new"
   #  get "profile", :to => "devise/registrations#edit"
   #end
-  devise_for :user, :as => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register", :edit => "profile"}
+  devise_for #{name.pluralize.downcase}, :as => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register", :edit => "profile"}
   root :to => 'static#home'
   get "static/home"
 end

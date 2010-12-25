@@ -121,9 +121,9 @@ inject_into_file 'config/application.rb', :before => "  end\nend" do
   RUBY
 end
 
-gsub_file 'config/environments/development.rb', /config.action_mailer.raise_delivery_errors = false/ do
-  "# config.action_mailer.raise_delivery_errors = false"
-end
+#gsub_file 'config/environments/development.rb', /config.action_mailer.raise_delivery_errors = false/ do
+#  "# config.action_mailer.raise_delivery_errors = false"
+#end
 
 # git
 

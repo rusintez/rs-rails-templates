@@ -1,5 +1,5 @@
-apply "/Volumes/WD/Work/Sandbox/Rails\ 3/base.rb"
+apply "https://github.com/rusintez/rs-rails-templates/raw/master/base.rb"
 
 if yes?("Install authentication?")
-  apply "/Volumes/WD/Work/Sandbox/Rails\ 3/auth.rb"
+  apply "https://github.com/rusintez/rs-rails-templates/raw/master/auth.rb"
 end

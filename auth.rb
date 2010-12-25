@@ -6,6 +6,17 @@ inject_into_file 'config/environments/development.rb', :before => "\nend" do
 <<-RUBY
   
 config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  :address              => "smtp.gmail.com",
+  :port                 => 587,
+  :domain               => 'localhost',
+  :user_name            => 'user_name',
+  :password             => 'user_pass',
+  :authentication       => 'plain',
+  :enable_starttls_auto => true  }
 
 RUBY
 end
@@ -14,7 +25,15 @@ generate "controller static home"
 generate "devise #{name}"
 generate "devise:views"
 
-remove_file 'config/routes.rb'
+if yes?("Install invitable logic for #{name.capitalize}?")
+  gem "devise_invitable"
+  run "bundle install"
+  generate "devise_invitable:install"
+  generate "devise_invitable #{name}"
+  generate "devise_invitable:views"
+end
+
+remove_file "config/routes.rb"
 
 file 'config/routes.rb', <<-RB
 #{app_name.camelize}::Application.routes.draw do

@@ -3,10 +3,11 @@ name = ask("What do you want a user to be called?")
 run 'rails generate devise:install'
 
 inject_into_file 'config/environments/development.rb', :before => "\nend" do
-  <<-RUBY
+<<-RUBY
   
-    config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  RUBY
+config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+RUBY
 end
 
 generate "controller static home"

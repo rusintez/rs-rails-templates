@@ -25,9 +25,26 @@ file 'config/routes.rb', <<-RB
   #  get "register", :to => "devise/registrations#new"
   #  get "profile", :to => "devise/registrations#edit"
   #end
-  devise_for #{name.pluralize.downcase}, :as => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register", :edit => "profile"}
+  #devise_for :#{name.pluralize.downcase}, :as => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register", :edit => "profile"}
+  
+  devise_for #{name.pluralize.downcase}, :skip => [:registrations, :sessions] do
+    # devise/registrations
+    get 'register' => 'devise/registrations#new', :as => :new_user_registration
+    post 'register' => 'devise/registrations#create', :as => :user_registration
+    get 'cancel' => 'devise/registrations#cancel', :as => :cancel_user_registration
+    get 'profile' => 'devise/registrations#edit', :as => :edit_user_registration
+    put 'profile' => 'devise/registrations#update'
+    delete 'cancel' => 'devise/registrations#destroy'
+
+    # devise/sessions
+    get 'login' => 'devise/sessions#new', :as => :new_user_session
+    post 'login' => 'devise/sessions#create', :as => :user_session
+    get 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
+  
   root :to => 'static#home'
   get "static/home"
+  
 end
 RB
 

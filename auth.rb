@@ -48,18 +48,18 @@ file 'config/routes.rb', <<-RB
   
   devise_for :#{name.pluralize.downcase}, :skip => [:registrations, :sessions] do
     # devise/registrations
-    get 'register' => 'devise/registrations#new', :as => :new_user_registration
-    post 'register' => 'devise/registrations#create', :as => :user_registration
-    get 'profile' => 'devise/registrations#edit', :as => :edit_user_registration
-    put 'profile' => 'devise/registrations#update', :as => :user_registration
+    get 'register' => 'devise/registrations#new', :as => :new_#{name}_registration
+    post 'register' => 'devise/registrations#create', :as => :#{name}_registration
+    get 'profile' => 'devise/registrations#edit', :as => :edit_#{name}_registration
+    put 'profile' => 'devise/registrations#update', :as => :#{name}_registration
     
-    get 'cancel' => 'devise/registrations#cancel', :as => :cancel_user_registration
+    get 'cancel' => 'devise/registrations#cancel', :as => :cancel_#{name}_registration
     delete 'cancel' => 'devise/registrations#destroy'
 
     # devise/sessions
-    get 'login' => 'devise/sessions#new', :as => :new_user_session
-    post 'login' => 'devise/sessions#create', :as => :user_session
-    get 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
+    get 'login' => 'devise/sessions#new', :as => :new_#{name}_session
+    post 'login' => 'devise/sessions#create', :as => :#{name}_session
+    get 'logout' => 'devise/sessions#destroy', :as => :destroy_#{name}_session
   end
   
   root :to => 'static#home'

@@ -50,7 +50,7 @@ validates_uniqueness_of  :email, :case_sensitive => false
 attr_accessor :#{account}_name, :#{account}_url
 
 validates_presence_of :#{account}_name, :on => :create
-validates_presence_of :#{account_url}, :on => :create, :message => "#{account.capitalize} url should be unique and not blank."
+validates_presence_of :#{account}_name, :on => :create, :message => "#{account.capitalize} url should be unique and not blank."
 
 before_validation :allow_sign_up, :on => :create
 before_validation :check_#{account}, :on => :create

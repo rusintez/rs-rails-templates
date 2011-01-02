@@ -163,7 +163,7 @@ inject_into_file 'app/controllers/application_controller.rb', :before => "\nend"
 RUBY
 end
 
-file 'app/helpers/url_helpers.rb', <<-RB
+file 'app/helpers/url_helper.rb', <<-RB
 module UrlHelper
   def with_subdomain(subdomain)
     subdomain = (subdomain || "")

@@ -85,7 +85,7 @@ end
 RUBY
 end
 
-inject_into_file 'app/models/#{account}.rb', :before => "\nend" do
+inject_into_file "app/models/#{account}.rb", :before => "\nend" do
 <<-RUBY
 
   has_many :#{account}_memberships

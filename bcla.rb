@@ -159,6 +159,7 @@ RB
 
 inject_into_file 'app/controllers/application_controller.rb', :before => "\nend" do
 <<-RUBY
+
   include UrlHelper
 RUBY
 end

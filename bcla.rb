@@ -107,7 +107,7 @@ end
 remove_file "app/controllers/#{account.pluralize}_controller.rb"
 
 file "app/controllers/#{account.pluralize}_controller.rb", <<-RB
-  class #{account.camelize}Controller < ApplicationController
+  class #{account.pluralize.camelize}Controller < ApplicationController
 
     before_filter :authenticate_#{name}!
     respond_to :html

@@ -135,7 +135,7 @@ file "app/controllers/#{account.pluralize}_controller.rb", <<-RB
     def create
       @#{account} = #{account.camelize}.new(params[:#{account}])
       if @#{account}.save
-        flash[:notice]=> '#{account.camelize} was successfully created.'
+        flash[:notice] = '#{account.camelize} was successfully created.'
       end
       redirect_to current_#{name}
     end
@@ -143,7 +143,7 @@ file "app/controllers/#{account.pluralize}_controller.rb", <<-RB
     def update
       @#{account} = #{account.camelize}.find(params[:id])
       if @#{account}.update_attributes(params[:#{account}])
-        flash[:notice] => '#{account.camelize} was successfully updated.'
+        flash[:notice] = '#{account.camelize} was successfully updated.'
       end
       respond_with(@#{account})
     end

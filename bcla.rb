@@ -42,6 +42,8 @@ generate "scaffold #{account}_membership #{name}:references #{account}:reference
 inject_into_file "app/models/#{name}.rb", :before => "\nend" do
 <<-RUBY
 
+attr_accessible :#{account}_name, :#{account}_url
+
 has_many :#{account}_memberships
 has_many :#{account.pluralize}, :through => :#{account}_memberships
 

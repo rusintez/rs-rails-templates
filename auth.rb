@@ -48,18 +48,18 @@ file 'config/routes.rb', <<-RB
   
   devise_for :#{name.pluralize.downcase}, :skip => [:registrations, :sessions] do
     # devise/registrations
-    get 'register' => 'devise/registrations#new', :as => :new_#{name}_registration
-    post 'register' => 'devise/registrations#create', :as => :#{name}_registration
-    get 'profile' => 'devise/registrations#edit', :as => :edit_#{name}_registration
-    put 'profile' => 'devise/registrations#update', :as => :#{name}_registration
+    get 'register' => 'devise/registrations#new', :as => :new_#{name.pluralize.downcase}_registration
+    post 'register' => 'devise/registrations#create', :as => :#{name.pluralize.downcase}_registration
+    get 'profile' => 'devise/registrations#edit', :as => :edit_#{name.pluralize.downcase}_registration
+    put 'profile' => 'devise/registrations#update', :as => :#{name.pluralize.downcase}_registration
     
-    get 'cancel' => 'devise/registrations#cancel', :as => :cancel_#{name}_registration
+    get 'cancel' => 'devise/registrations#cancel', :as => :cancel_#{name.pluralize.downcase}_registration
     delete 'cancel' => 'devise/registrations#destroy'
 
     # devise/sessions
-    get 'login' => 'devise/sessions#new', :as => :new_#{name}_session
-    post 'login' => 'devise/sessions#create', :as => :#{name}_session
-    get 'logout' => 'devise/sessions#destroy', :as => :destroy_#{name}_session
+    get 'login' => 'devise/sessions#new', :as => :new_#{name.pluralize.downcase}_session
+    post 'login' => 'devise/sessions#create', :as => :#{name.pluralize.downcase}_session
+    get 'logout' => 'devise/sessions#destroy', :as => :destroy_#{name.pluralize.downcase}_session
   end
   
   root :to => 'static#home'
